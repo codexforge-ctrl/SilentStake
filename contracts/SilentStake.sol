@@ -111,11 +111,11 @@ contract SilentStake is SepoliaConfig {
         return hasClaimed[account];
     }
 
-    function _addEncrypted(euint64 left, euint64 right) private pure returns (euint64) {
+    function _addEncrypted(euint64 left, euint64 right) private returns (euint64) {
         return FHE.add(left, right);
     }
 
-    function _subEncrypted(euint64 left, euint64 right) private pure returns (euint64) {
+    function _subEncrypted(euint64 left, euint64 right) private returns (euint64) {
         return FHE.sub(left, right);
     }
 
