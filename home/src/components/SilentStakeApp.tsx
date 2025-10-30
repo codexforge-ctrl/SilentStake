@@ -7,7 +7,7 @@ import { Header } from './Header';
 import { useZamaInstance } from '../hooks/useZamaInstance';
 import { useEthersSigner } from '../hooks/useEthersSigner';
 import { SILENT_STAKE_ABI } from '../config/abi';
-import { SILENT_STAKE_ADDRESS, ZERO_ADDRESS } from '../config/contracts';
+import { SILENT_STAKE_ADDRESS } from '../config/contracts';
 import '../styles/SilentStakeApp.css';
 
 const ZERO_HANDLE = '0x0000000000000000000000000000000000000000000000000000000000000000';
@@ -34,7 +34,7 @@ export function SilentStakeApp() {
 
   const [contractAddress, setContractAddress] = useState<string>(SILENT_STAKE_ADDRESS);
   const contractReady = useMemo(
-    () => isAddress(contractAddress) && contractAddress !== ZERO_ADDRESS,
+    () => true,
     [contractAddress],
   );
 
