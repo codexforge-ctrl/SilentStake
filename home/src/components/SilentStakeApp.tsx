@@ -2,7 +2,6 @@ import { useState, useMemo, useCallback } from 'react';
 import { useAccount, useReadContract } from 'wagmi';
 import { sepolia } from 'wagmi/chains';
 import { Contract } from 'ethers';
-import { isAddress } from 'viem';
 import { Header } from './Header';
 import { useZamaInstance } from '../hooks/useZamaInstance';
 import { useEthersSigner } from '../hooks/useEthersSigner';
@@ -48,7 +47,10 @@ export function SilentStakeApp() {
   const [decryptStatus, setDecryptStatus] = useState<string | null>(null);
   const [formError, setFormError] = useState<string | null>(null);
 
-  const accountArg = useMemo(() => (address ? [address] : undefined), [address]);
+  const accountArg = useMemo<readonly [`0x${string}`] | undefined>(
+    () => (address ? [address as `0x${string}`] as const : undefined),
+    [address],
+  );
 
   const {
     data: balanceHandle,
